@@ -1,15 +1,28 @@
 from turtle import *
-
-taille = 130
-x = 0
-y = 0
-
-def carre(x, y, taille):
-    down()
-    goto(x, y)
+import random
+largeur = 140
+hauteur = 60
+x1 = 0
+y1 = 0
+goto (x1, y1)
+couleur1 = random.choice(["red", "blue", "green", "yellow", "purple", "orange"])
+def etage0():
     pendown()
-    for _ in range(4):
-        forward(taille)
-        right(90)
+    begin_fill()
+    fillcolor(couleur1)
 
-carre(x, y, taille)
+    pencolor(couleur1)
+    forward(largeur)
+    left(90)
+    forward(hauteur)
+    left(90)
+    forward(largeur)
+    left(90)    
+    forward(hauteur)
+    
+
+etage0()
+goto (x1, y1 + hauteur)
+setheading(0)
+etage0()
+done()
