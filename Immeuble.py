@@ -5,17 +5,19 @@ import math
 largeur = 140
 hauteur = 60
 
-x1 = 0
-y1 = 0
+x1 = -70
+y1 = -85
 
 
 couleur_facade = random.choice(["red", "blue", "green", "yellow", "purple", "orange"])
 couleur_porte = random.choice(["red", "blue", "green", "yellow", "purple", "orange", "brown", "white"])
 couleur_vitre = "cyan"
+couleur_toit = "saddlebrown"
 
-pencolor("black")   #j'avais mal fait les contours et ça chiait sur tout le reste là c'est tout beau
+pencolor("black")
 
-
+""" J'ai fait qu'un immeuble simple qui est pas généré aléatoirement pour l'instant
+ mais déjà j'ai rattrapé mon retard et c'est moins moche alors je m'en contente."""
 def niveau(x, y):
     """Dessine un niveau. j'ai bien prototypé comme un grand"""
     penup()
@@ -142,14 +144,35 @@ def balcon(x, y):
         pendown()
         forward(12)
 
-#j'espère ça fonctionne bien maintenant
+
+def toit(x, y):
+    penup()
+    goto(x - 10, y)
+    setheading(0)
+    pendown()
+
+    fillcolor(couleur_toit)
+    begin_fill()
+
+    goto(x + largeur + 10, y)
+    goto(x + largeur / 2, y + 45)
+    goto(x - 10, y)
+
+    end_fill()
+
+
+#ça fonctionne bien maintenant
 niveau(x1, y1)
 niveau(x1, y1 + hauteur)
+toit(x1, y1 + 2 * hauteur)
 
 porte(x1 + 20, y1)
+fenetre(x1 + 60, y1 + 15)
+fenetre(x1 + 100, y1 + 15)
 
 porte_fenetre(x1 + 20, y1 + hauteur + 5)
-balcon(x1 + 15, y1 + hauteur + 5)
+balcon(x1 + 20, y1 + hauteur + 5)
+fenetre(x1 + 55, y1 + hauteur + 15)
 fenetre(x1 + 90, y1 + hauteur + 15)
 
 done()
