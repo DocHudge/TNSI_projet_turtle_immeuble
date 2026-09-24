@@ -8,14 +8,22 @@ hauteur = 60
 x1 = 0
 y1 = 0
 
-couleur1 = random.choice(["red", "blue", "green", "yellow", "purple", "orange"])
 
-color("black", couleur1)
+couleur_facade = random.choice(["red", "blue", "green", "yellow", "purple", "orange"])
+couleur_porte = random.choice(["red", "blue", "green", "yellow", "purple", "orange", "brown", "white"])
+couleur_vitre = "cyan"
 
-#j'ai fait de la merde avec les couleurs je repush après c'est la D là
+pencolor("black")   #j'avais mal fait les contours et ça chiait sur tout le reste là c'est tout beau
 
-def etage0():
+
+def niveau(x, y):
+    """Dessine un niveau. j'ai bien prototypé comme un grand"""
+    penup()
+    goto(x, y)
+    setheading(0)
     pendown()
+
+    fillcolor(couleur_facade)
     begin_fill()
 
     forward(largeur)
@@ -35,6 +43,7 @@ def fenetre(x, y):
     setheading(0)
     pendown()
 
+    fillcolor(couleur_vitre)
     begin_fill()
 
     for i in range(4):
@@ -43,6 +52,7 @@ def fenetre(x, y):
 
     end_fill()
 
+    #putain de barrière qui est moins moche normalement
     penup()
     goto(x + 15, y)
     setheading(90)
@@ -62,6 +72,7 @@ def porte(x, y):
     setheading(90)
     pendown()
 
+    fillcolor(couleur_porte)
     begin_fill()
 
     forward(40)
@@ -75,7 +86,6 @@ def porte(x, y):
         goto(px, py)
 
     goto(x + 30, y)
-
     goto(x, y)
 
     end_fill()
@@ -87,6 +97,7 @@ def porte_fenetre(x, y):
     setheading(0)
     pendown()
 
+    fillcolor(couleur_vitre)
     begin_fill()
 
     for i in range(2):
@@ -131,24 +142,14 @@ def balcon(x, y):
         pendown()
         forward(12)
 
-penup()
-goto(x1, y1)
-setheading(0)
-etage0()
+#j'espère ça fonctionne bien maintenant
+niveau(x1, y1)
+niveau(x1, y1 + hauteur)
 
-penup()
-goto(x1, y1 + hauteur)
-setheading(0)
-etage0()
-
-#porte gauche
 porte(x1 + 20, y1)
 
-#gauche mon roh
 porte_fenetre(x1 + 20, y1 + hauteur + 5)
 balcon(x1 + 15, y1 + hauteur + 5)
-
 fenetre(x1 + 90, y1 + hauteur + 15)
-
 
 done()
