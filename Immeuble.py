@@ -5,13 +5,10 @@ import math
 largeur = 140
 hauteur = 60
 
-x1 = -70
+x1 = -600
 y1 = -85
 
-couleur_facade = random.choice(["red", "blue", "green", "yellow", "purple", "orange"])
-couleur_porte = random.choice(["brown"])
-couleur_vitre = "cyan"
-couleur_toit = random.choice(["darkgrey", "grey", "brown"])
+
 
 pencolor("black")
 """Un seul bâtiment mais maintenant il est random au moins"""
@@ -156,7 +153,27 @@ def toit(x, y):
 
     end_fill()
 
-#Je me suis compliqué la vie à partir d'ici j'évite de trop y toucher et en plus y'a qu'un immeuble
+def toit_plat(x, y):
+    penup()
+    goto(x - 10, y)
+    setheading(0)
+    pendown()
+
+    fillcolor(couleur_toit)
+    begin_fill()
+
+    goto(x + largeur + 10, y)
+    goto(x + largeur + 10, y + 10)
+    goto(x - 10 + largeur + 10, y + 10)
+    goto(x - 10, y)
+
+    end_fill()
+
+
+#Je me suis compliqué la vie à partir d'ici j'évite de trop y toucher.
+
+"""
+#ça faut pas y toucher ça fonctionne pour faire un immeuble correct
 
 niveaux = random.randint(1, 4)
 
@@ -185,6 +202,45 @@ for niveau_actuel in range(1, niveaux):
         else:
             porte_fenetre(position, y)
             balcon(position, y)
+"""
+for i in range(6):
+    niveaux = random.randint(1, 4)
+    couleur_facade = random.choice(["red", "blue", "green", "yellow", "purple", "orange"])
+    couleur_porte = random.choice(["brown"])
+    couleur_vitre = "cyan"
+    couleur_toit = random.choice(["darkgrey", "grey", "brown"])
 
+    for i in range(niveaux):
+        niveau(x1, y1 + i * hauteur)
 
+    toit1 = toit(x1, y1 + niveaux * hauteur)
+    toit_plat1 = toit_plat(x1, y1 + niveaux * hauteur)
+
+    toits = [toit1, toit_plat1]
+    choix_toit = random.choice(toits)
+    
+    positions = [x1 + 15, x1 + 55, x1 + 95]
+
+    position_porte = random.choice(positions)
+    porte(position_porte, y1)
+
+    for position in positions:
+        if position != position_porte:
+            fenetre(position, y1 + 15)
+
+    for niveau_actuel in range(1, niveaux):
+        y = y1 + niveau_actuel * hauteur + 5
+
+        for position in positions:
+            ouverture = random.choice(["fenetre", "porte_fenetre"])
+
+            if ouverture == "fenetre":
+                fenetre(position, y + 10)
+            else:
+                porte_fenetre(position, y)
+                balcon(position, y)
+    penup()
+
+    x1 += 220
+    goto(x1 +260, y1)
 done()
