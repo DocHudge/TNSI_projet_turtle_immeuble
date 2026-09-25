@@ -8,6 +8,7 @@ hauteur = 60
 x1 = -600
 y1 = -85
 
+speed(0)
 
 
 pencolor("black")
@@ -203,6 +204,8 @@ for niveau_actuel in range(1, niveaux):
             porte_fenetre(position, y)
             balcon(position, y)
 """
+
+
 for i in range(6):
     niveaux = random.randint(1, 4)
     couleur_facade = random.choice(["red", "blue", "green", "yellow", "purple", "orange"])
@@ -213,12 +216,10 @@ for i in range(6):
     for i in range(niveaux):
         niveau(x1, y1 + i * hauteur)
 
-    toit1 = toit(x1, y1 + niveaux * hauteur)
-    toit_plat1 = toit_plat(x1, y1 + niveaux * hauteur)
-
-    toits = [toit1, toit_plat1]
+    toits = [toit, toit_plat]
     choix_toit = random.choice(toits)
-    
+    choix_toit(x1, y1 + niveaux * hauteur)
+
     positions = [x1 + 15, x1 + 55, x1 + 95]
 
     position_porte = random.choice(positions)
