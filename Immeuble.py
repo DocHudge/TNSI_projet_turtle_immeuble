@@ -12,7 +12,11 @@ speed(0)
 
 
 pencolor("black")
+
+
 """Un seul bâtiment mais maintenant il est random au moins"""
+
+
 def route (x, y):
     penup()
     goto(x, y)
@@ -208,7 +212,7 @@ def toit_plat(x, y):
     end_fill()
 
 
-#Je me suis compliqué la vie à partir d'ici j'évite de trop y toucher.
+#NE PAS TOUCHER CA CASSE LE CODE 
 
 """
 #ça faut pas y toucher ça fonctionne pour faire un immeuble correct
