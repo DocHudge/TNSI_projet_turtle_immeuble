@@ -13,6 +13,43 @@ speed(0)
 
 pencolor("black")
 """Un seul bâtiment mais maintenant il est random au moins"""
+def route (x, y):
+    penup()
+    goto(x, y)
+    setheading(0)
+    pendown()
+
+    fillcolor("grey")
+    begin_fill()
+
+    forward(2000)
+    right(90)
+    forward(5)
+    right(90)
+    forward(2000)
+    right(90)
+    forward(5)
+
+    end_fill()
+
+def ciel(x, y):
+    penup()
+    goto(x, y)
+    setheading(0)
+    pendown()
+
+    fillcolor("#B3E9FF")
+    begin_fill()
+
+    forward(2000)
+    left(90)
+    forward(700)
+    left(90)
+    forward(2000)
+    left(90)
+    forward(700)
+
+    end_fill()
 
 def niveau(x, y):
     penup()
@@ -204,8 +241,8 @@ for niveau_actuel in range(1, niveaux):
             porte_fenetre(position, y)
             balcon(position, y)
 """
-
-
+ciel(-1000, -85)
+route(-1000, -85)
 for i in range(6):
     niveaux = random.randint(1, 4)
     couleur_facade = random.choice(["red", "blue", "green", "yellow", "purple", "orange"])
